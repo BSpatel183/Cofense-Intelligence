@@ -30,7 +30,7 @@
                 "description": "Enter Base URL for example https://www.threathq.com/apiv1."
             }
         },
-        "Cofense_User_Token": {
+        "Cofense_Username": {
             "type": "string",
             "minLength": 1,
             "metadata": {
@@ -114,7 +114,7 @@
                 "description": "This is an optional parameter if required enter the proxy port."
             }
         },
-        "IsDefenderUser": {
+        "SendCofenseIndicatorToDefender": {
             "type": "string",
             "metadata": {
                 "description": "Select Yes If you are having defender access."
@@ -123,7 +123,7 @@
                 "Yes",
                 "No"
             ],
-            "defaultValue": "None"
+            "defaultValue": "No"
         },
         "LogLevel": {
             "type": "string",
@@ -276,10 +276,11 @@
                         "APPLICATIONINSIGHTS_CONNECTION_STRING": "[reference(resourceId('microsoft.insights/components', variables('FunctionName')), '2015-05-01').ConnectionString]",
                         "AzureWebJobsStorage": "[concat('DefaultEndpointsProtocol=https;AccountName=', toLower(variables('FunctionName')),';AccountKey=',listKeys(resourceId('Microsoft.Storage/storageAccounts', toLower(variables('FunctionName'))), '2019-06-01').keys[0].value, ';EndpointSuffix=',toLower(variables('StorageSuffix')))]",
                         "logAnalyticsUri": "[variables('LogAnaltyicsUri')]",
+                        "Function_App_Name": "[variables('FunctionName')]",
                         "WorkspaceID": "[parameters('WorkspaceID')]",
                         "WorkspaceKey": "[parameters('WorkspaceKey')]",
                         "BaseURL": "[parameters('BaseURL')]",
-                        "Cofense_User_Token": "[parameters('Cofense_User_Token')]",
+                        "Cofense_Username": "[parameters('Cofense_Username')]",
                         "Cofense_Password": "[parameters('Cofense_Password')]",
                         "Azure_Client_Id": "[parameters('Azure_Client_Id')]",
                         "Azure_Client_Secret": "[parameters('Azure_Client_Secret')]",
@@ -291,11 +292,11 @@
                         "Proxy_Password": "[parameters('Proxy_Password')]",
                         "Proxy_URL": "[parameters('Proxy_URL')]",
                         "Proxy_Port": "[parameters('Proxy_Port')]",
-                        "IsDefenderUser": "[parameters('IsDefenderUser')]",
+                        "SendCofenseIndicatorToDefender": "[parameters('SendCofenseIndicatorToDefender')]",
                         "Malware_Data_Table_name": "[parameters('Malware_Data_Table_name')]",
                         "Schedule": "[parameters('Schedule')]",
                         "LogLevel": "[parameters('LogLevel')]",
-                        "WEBSITE_RUN_FROM_PACKAGE": "<----path of zip file----->"
+                        "WEBSITE_RUN_FROM_PACKAGE": "https://github.com/harshcds1212/CofenseIntelligence/blob/main/CofenseIntelligenceDefender.zip?raw=true"
                     }
                 }
             ]
